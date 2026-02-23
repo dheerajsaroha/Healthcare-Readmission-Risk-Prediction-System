@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Healthcare Readmission Risk</title>
+    <style>
+        body { font-family: Arial; background:#f4f6f8; padding:40px; }
+        .card { background:white; padding:25px; width:360px; margin:auto;
+                border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,.1); }
+        input { width:100%; padding:8px; margin:8px 0; }
+        button { width:100%; padding:10px; background:#007bff; color:white;
+                 border:none; cursor:pointer; }
+        h2{text-align:center;}
+    </style>
+</head>
+
+<body>
+<div class="card">
+<h2>Readmission Risk Predictor</h2>
+
+<form action="/ui_predict" method="post">
+<input name="age" placeholder="Age group (0–10)" required>
+<input name="time_in_hospital" placeholder="Time in hospital" required>
+<input name="num_lab_procedures" placeholder="Lab procedures" required>
+<input name="num_medications" placeholder="Medications" required>
+<input name="number_outpatient" placeholder="Outpatient visits" required>
+<input name="number_emergency" placeholder="Emergency visits" required>
+<input name="number_inpatient" placeholder="Inpatient visits" required>
+<button type="submit">Predict Risk</button>
+</form>
+
+{% if risk %}
+<h3 style="text-align:center;">Readmission Risk: {{ risk }}%</h3>
+{% endif %}
+</div>
+</body>
+</html>
